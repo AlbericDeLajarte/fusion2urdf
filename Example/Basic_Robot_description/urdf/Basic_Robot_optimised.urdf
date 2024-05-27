@@ -1,0 +1,74 @@
+<robot name="Basic_Robot">
+  <material name="silver">
+    <color rgba="0.700 0.700 0.700 1.000" />
+  </material>
+  <link name="base_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.047517484701943946 0.004858805619815502 -0.0300059480762529" />
+      <mass value="0.4424914005445932" />
+      <inertia ixx="0.000128" ixy="2e-06" ixz="-0.0" iyy="0.00046" iyz="0.0" izz="0.000341" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://Basic_Robot_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.049978000640869144 0.0 -0.03" />
+      <geometry>
+        <box size="0.09995600128173829 0.02 0.06" /></geometry>
+    </collision>
+  </link>
+  <link name="right_wheel_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.005000000000000007 4.336808689942018e-18 -0.001427613941018771" />
+      <mass value="0.015522874373267303" />
+      <inertia ixx="1e-06" ixy="0.0" ixz="-0.0" iyy="1e-06" iyz="0.0" izz="2e-06" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.0 -0.005 0.06" />
+      <geometry>
+        <mesh filename="package://Basic_Robot_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.004991756439208984 0.0 -0.0015000000000000013" />
+      <geometry>
+        <box size="0.02998351287841797 0.029991756439208987 0.003" /></geometry>
+    </collision>
+  </link>
+  <link name="left_wheel_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.004999999999999999 0.0 0.0014276139410187671" />
+      <mass value="0.015522874373267314" />
+      <inertia ixx="1e-06" ixy="-0.0" ixz="-0.0" iyy="1e-06" iyz="0.0" izz="2e-06" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.0 -0.005 -0.0" />
+      <geometry>
+        <mesh filename="package://Basic_Robot_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.004991756439208984 0.0 0.0015" />
+      <geometry>
+        <box size="0.02998351287841797 0.029991756439208987 0.003" /></geometry>
+    </collision>
+  </link>
+  <joint name="Rev1" type="continuous">
+    <origin rpy="0 0 0" xyz="0.0 0.005 -0.06" />
+    <parent link="base_link" />
+    <child link="right_wheel_1" />
+    <axis xyz="0.0 0.0 -1.0" />
+  </joint>
+  <joint name="Rev2" type="continuous">
+    <origin rpy="0 0 0" xyz="0.0 0.005 0.0" />
+    <parent link="base_link" />
+    <child link="left_wheel_1" />
+    <axis xyz="0.0 0.0 1.0" />
+  </joint>
+</robot>

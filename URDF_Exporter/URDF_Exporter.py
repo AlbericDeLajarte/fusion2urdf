@@ -5,6 +5,7 @@ import adsk, adsk.core, adsk.fusion, traceback
 import os
 import sys
 from .utils import utils
+from .utils import postprocess
 from .core import Link, Joint, Write
 
 """
@@ -92,6 +93,11 @@ def run(context):
         # Generate STl files        
         utils.copy_occs(root)
         utils.export_stl(design, save_dir, components)   
+
+        # Post process URDF file
+        postprocessor = postprocess.PostProcess(os.path.join(save_dir, 'urdf', robot_name + '.xacro'))
+        postprocessor.xacro_to_urdf()
+        postprocessor.post_process()
         
         ui.messageBox(msg, title)
         
